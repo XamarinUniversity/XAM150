@@ -23,17 +23,17 @@ namespace NetStatus
 			ConnectionDetails.Text = CrossConnectivity.Current
                 .ConnectionTypes.First ().ToString ();
 
-			CrossConnectivity.Current.ConnectivityChanged += UpdateNetworkInfo;
+			CrossConnectivity.Current.ConnectivityTypeChanged += UpdateNetworkInfo;
 		}
 
 		protected override void OnDisappearing ()
 		{
 			base.OnDisappearing ();
 
-			CrossConnectivity.Current.ConnectivityChanged -= UpdateNetworkInfo;
+			CrossConnectivity.Current.ConnectivityTypeChanged -= UpdateNetworkInfo;
 		}
 
-		private void UpdateNetworkInfo (object sender, ConnectivityChangedEventArgs e)
+		private void UpdateNetworkInfo (object sender, ConnectivityTypeChangedEventArgs e)
 		{
 			if (CrossConnectivity.Current != null && CrossConnectivity.Current.ConnectionTypes != null) {
 				var connectionType = CrossConnectivity.Current.ConnectionTypes.FirstOrDefault ();
