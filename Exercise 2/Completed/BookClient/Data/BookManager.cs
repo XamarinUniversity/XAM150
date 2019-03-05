@@ -60,7 +60,7 @@ namespace BookClient.Data
         {
             // TODO: use PUT to update a book
             HttpClient client = await GetClient();
-            await client.PutAsync(Url + "/" + book.ISBN,
+            await client.PutAsync(Url + book.ISBN,
                 new StringContent(
                     JsonConvert.SerializeObject(book),
                     Encoding.UTF8, "application/json"));
@@ -70,7 +70,7 @@ namespace BookClient.Data
         {
             // TODO: use DELETE to delete a book
             HttpClient client = await GetClient();
-            await client.DeleteAsync(Url + "/" + isbn);
+            await client.DeleteAsync(Url + isbn);
         }
     }
 }
